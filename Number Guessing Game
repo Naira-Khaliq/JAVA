@@ -1,0 +1,53 @@
+package task1;
+
+		import java.util.Scanner;
+		import java.util.Random;
+
+		public class NumberGuessinggame 
+		{
+		    public static void main(String[] args) {
+		        Scanner scanner = new Scanner(System.in);
+		        Random random = new Random();
+		        boolean playAgain = true;
+
+		        while (playAgain) {
+		            int lowerBound = 1;
+		            int upperBound = 100;
+		            int randomNumber = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+		            int attempts = 0;
+		            int maxAttempts = 10;
+		            boolean correctGuess = false;
+
+		            System.out.println("Guess the number between " + lowerBound + " and " + upperBound);
+		            
+		            while (!correctGuess && attempts < maxAttempts) {
+		                System.out.print("Enter your guess: ");
+		                int userGuess = scanner.nextInt();
+		                attempts++;
+
+		                if (userGuess == randomNumber) {
+		                    System.out.println("Congratulations! You guessed the correct number.");
+		                    correctGuess = true;
+		                } else if (userGuess < randomNumber) {50
+		                    System.out.println("Your guess is too low.");
+		                } else {
+		                    System.out.println("Your guess is too high.");
+		                }
+
+		                if (attempts >= maxAttempts) {
+		                    System.out.println("Sorry, you've reached the maximum number of attempts. The correct number was " + randomNumber);
+		                }
+		            }
+
+		            System.out.print("Do you want to play again? (yes/no): ");
+		            String userResponse = scanner.next();
+		            playAgain = userResponse.equalsIgnoreCase("yes");
+		        }
+		        
+		        scanner.close();
+		        System.out.println("Thank you for playing!");
+		    }
+
+	}
+
+
